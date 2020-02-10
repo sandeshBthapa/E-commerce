@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block main_content %}
+<div class="container">
+
+{% if not billing_profile %}
+<div class="row">
+<div class="col-6">
+<p class="lead">Login</p>
+{% include "auth/snippets/login_form.html" with form=login_form next_url=request.build_absolute_uri %}
+</div>
+<div class="col-6">
+Continue as guest
+{% url "guest_register" as guest_register_url %}
+{% include "auth/snippets/login_form.html" with form=guest_form action_url=guest_register_url  next_url=request.build_absolute_uri%}
+</div>
+</div>
+{% else %}
+
+<div class="row">
+<div class="col">
+<h1>Checkout</h1>
+<p>Cart Total       : {{ order.cart.total }}</p>
+<p>Shipping Total   : {{ order.shipping_total }}</p>
+<p>Order Total            : {{ order.total }}</p>
+</div>
+</div>
+
+{% endif %}
+</div>
+
+{% endblock main_content %}
+

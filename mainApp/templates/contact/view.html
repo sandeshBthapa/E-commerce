@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}{{title}}
+{% endblock title %}
+
+
+{% block main_content %}
+{% comment %} {% include "base/navbar.html" with brandname=brand %} {% endcomment %}
+
+    <div class="container">
+        <div class="row">
+                <div class="col">
+                    <p>{{content}}</p>
+                    <div class="col-sm-6 col-12">
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{form}}
+                            <br>
+                            <button type="submit" class="btn btn-primary form-control">Submit</button>
+                            {% comment %} <input type="submit" value="Submit"> {% endcomment %}
+                        </form>
+                    </div>               
+                </div>
+        </div>
+    </div>
+    
+{% endblock main_content %}
+
+
+    <h1> TEST :: I think this will won't work because it must be written inside blocks .</h1>

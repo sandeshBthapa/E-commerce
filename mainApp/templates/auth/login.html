@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+Login Page
+{% endblock title %}
+
+{% block main_content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            {% include "auth/snippets/login_form.html" %}
+        </div>
+    </div>
+</div>
+{% endblock main_content %}

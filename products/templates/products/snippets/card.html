@@ -1,0 +1,13 @@
+{% comment %} <div class="card flex-fill">
+  {% if instance.image %}
+    <a href="{{ instance.get_absolute_url }}">
+        <img src="{{instance.image.url}}" class="card-img-top" alt="{{ instance.title }} logo" >
+    </a>
+  {% endif %}
+  <div class="card-body">
+    <h5 class="card-title">{{ instance.title }} hhh</h5>
+    <div class="card-text" style="max-height: 20px !important;">{{ instance.description|truncatewords:12 }}</div>
+    <a href="{{ instance.get_absolute_url }}" class="btn btn-primary">View Details jjkydisu</a>
+    <a href="{% url "products:detail_from_slug" slug=instance.slug %}" class="btn btn-warning">URL shortcut</a>
+  </div>
+</div> {% endcomment %}

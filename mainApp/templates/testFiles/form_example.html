@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ title }} {% endblock %}
+<link rel="stylesheet" href="{% static "css/custom_landing_page_style.css" %}">
+
+{% block main_content %}
+<div class='text-center'>
+    <h1> Welcome </h1>
+</div>
+<div class='container'>
+    <div class='row'>
+        <div class='col'>
+            <img src="/media/images/bags.jpg" />
+            <p>{{ content }}</p>
+        </div>
+        <div class="col-sm-6 col-12">
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" class="form-control" placeholder="Name" name="fullname">
+                <input type="email" class="form-control" placeholder="Email" name="email">
+                <textarea name="content" class="form-control" placeholder="Your content"></textarea>
+                <button type="submit" class="btn btn-default">Submit</button> 
+            </form>
+        </div>
+    </div>
+
+    {% comment %} {% if premium_content %} {% endcomment %}
+    {% if request.user.is_authenticated %}
+    <div class='row'>
+        <div class='col'>
+            <h3>Premium Content for {{ request.user.username }}</h3>
+            <p>{{ premium_content }}</p>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col'>
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+    </div>
+    {% else %}
+        <div class='row'>
+            <div class='col'>
+                <a href="{% url 'login' %}">Login</a>/<a href="{% url 'register' %}">Register</a>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock main_content %}
